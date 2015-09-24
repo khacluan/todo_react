@@ -24,5 +24,7 @@ module TodoReact
     config.active_record.raise_in_transactional_callbacks = true
 
     config.react.addons = true
+
+    config.less.compress = true
   end
 end
