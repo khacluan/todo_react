@@ -1,9 +1,10 @@
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
+//= require constants
 //= require classnames
 //= require blacklist
 //= require react
 //= require react_ujs
 //= require components
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
 //= require_tree .

@@ -12,7 +12,19 @@ class Index extends React.Component {
           </FormField>
         </Form>
 
-        <Table></Table>
+        <Table>
+          <thead>
+            <th>No</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <tr>
+
+            </tr>
+          </tbody>
+        </Table>
       </div>
     )
   }
