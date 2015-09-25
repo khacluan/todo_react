@@ -16,7 +16,7 @@ class Index extends React.Component {
         console.log(error);
       }
     });
-  };
+  }
 
   render() {
     if(this.state) {
@@ -47,7 +47,7 @@ class Index extends React.Component {
               {
                 this.state.collection.map(function(item, index) {
                   return (
-                    <tr key={item.id}>
+                    <tr>
                       <td>{index + 1}</td>
                       <td>{item.title}</td>
                       <td>{item.content}</td>
@@ -58,10 +58,12 @@ class Index extends React.Component {
               }
             </tbody>
           </Table>
+
+          <Pagination currentPage={1} pageSize={25} total={100} />
         </div>
       )
     } else {
-      return <p></p>
+      return <p>No data to display</p>
     }
   }
 }
@@ -73,5 +75,10 @@ Index.propTypes = {
 
 Index.defaultProps = {
   collection_url: '',
-  collection: []
+  collection: [],
+  meta: {
+    currentPage: 1,
+    pageSize:    1,
+    total:       0
+  }
 };

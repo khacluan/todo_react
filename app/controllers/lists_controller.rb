@@ -6,7 +6,16 @@ class ListsController < ApplicationController
   def index
     @lists = List.page(params[:page])
 
-    render json: @lists if request.xhr?
+    if request.xhr?
+      render json: {
+        collection: @lists,
+        meta: {
+          current_page: @list.current_page,
+          total:        @list.total_count,
+          pageSize:     25
+        }
+      }
+    end
   end
 
   # GET /lists/1

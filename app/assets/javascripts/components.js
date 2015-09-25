@@ -6,3 +6,4 @@
 //= require ./components/FormField
 //= require ./components/FormLabel
 //= require ./components/FormInput
+//= require ./components/Pagination

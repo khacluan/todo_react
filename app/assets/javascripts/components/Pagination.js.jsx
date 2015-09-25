@@ -1,20 +1,5 @@
-var React = require('react/addons');
-var classNames = require('classnames');
-
-module.exports = React.createClass({
-	displayName: 'Pagination',
-	propTypes: {
-		className: React.PropTypes.string,
-		currentPage: React.PropTypes.number.isRequired,
-		onPageSelect: React.PropTypes.func,
-		pageSize: React.PropTypes.number.isRequired,
-		plural: React.PropTypes.string,
-		singular: React.PropTypes.string,
-		style: React.PropTypes.object,
-		total: React.PropTypes.number.isRequired,
-		limit: React.PropTypes.number
-	},
-	renderCount () {
+class Pagination extends React.Component {
+	_renderCount () {
 		let count = '';
 		let { currentPage, pageSize, plural, singular, total } = this.props;
 		if (!total) {
@@ -34,12 +19,14 @@ module.exports = React.createClass({
 		return (
 			<div className="Pagination__count">{count}</div>
 		);
-	},
-	onPageSelect (i) {
+	}
+
+	_onPageSelect (i) {
 		if (!this.props.onPageSelect) return;
 		this.props.onPageSelect(i);
-	},
-	renderPages () {
+	}
+
+	_renderPages () {
 		if (this.props.total <= this.props.pageSize) return null;
 
 		let pages = [];
@@ -65,7 +52,7 @@ module.exports = React.createClass({
 		}
 
 		if (minPage > 0) {
-			pages.push(<button key={'page_start'} className={'Pagination__list__item'} onClick={() => this.onPageSelect(1)}>...</button>);
+			pages.push(<button key={'page_start'} className={'Pagination__list__item'} onClick={() => this._onPageSelect(1)}>...</button>);
 		}
 
 		for (let i = minPage; i < maxPage; i++) {
@@ -75,12 +62,12 @@ module.exports = React.createClass({
 				'is-selected': current
 			});
 			/* eslint-disable no-loop-func */
-			pages.push(<button key={'page_' + page} className={className} onClick={() => this.onPageSelect(page)}>{page}</button>);
+			pages.push(<button key={'page_' + page} className={className} onClick={() => this._onPageSelect(page)}>{page}</button>);
 			/* eslint-enable */
 		}
 
 		if (maxPage < totalPages) {
-			pages.push(<button key={'page_end'} className={'Pagination__list__item'} onClick={() => this.onPageSelect(totalPages)}>...</button>);
+			pages.push(<button key={'page_end'} className={'Pagination__list__item'} onClick={() => this._onPageSelect(totalPages)}>...</button>);
 		}
 
 		return (
@@ -89,14 +76,27 @@ module.exports = React.createClass({
 			</div>
 		);
 
-	},
+	}
+
 	render () {
 		var className = classNames('Pagination', this.props.className);
 		return (
 			<div className={className} style={this.props.style}>
-				{this.renderCount()}
-				{this.renderPages()}
+				{this._renderCount()}
+				{this._renderPages()}
 			</div>
 		);
 	}
-});
+}
+
+Pagination.propTypes = {
+	className: 		React.PropTypes.string,
+	currentPage: 	React.PropTypes.number.isRequired,
+	onPageSelect: React.PropTypes.func,
+	pageSize: 		React.PropTypes.number.isRequired,
+	plural: 			React.PropTypes.string,
+	singular: 		React.PropTypes.string,
+	style: 				React.PropTypes.object,
+	total: 				React.PropTypes.number.isRequired,
+	limit: 				React.PropTypes.number
+};
