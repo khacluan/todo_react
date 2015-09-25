@@ -46,12 +46,13 @@ class Index extends React.Component {
             <tbody>
               {
                 this.state.collection.map(function(item, index) {
-                  return (<tr>
-                            <td>{index}</td>
-                            <td>{item.title}</td>
-                            <td>{item.content}</td>
-                            <td>{item.url}</td>
-                          </tr>
+                  return (
+                    <tr key={item.id}>
+                      <td>{index + 1}</td>
+                      <td>{item.title}</td>
+                      <td>{item.content}</td>
+                      <td>{item.url}</td>
+                    </tr>
                   )
                 })
               }
