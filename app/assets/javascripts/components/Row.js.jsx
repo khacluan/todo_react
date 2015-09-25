@@ -25,4 +25,4 @@ Row.propTypes = {
 	style: 			React.PropTypes.object
 };
 
-Row.defaultProps = { gutter: E.width.gutter };
+Row.defaultProps = { gutter: exports.width.gutter };

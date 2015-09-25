@@ -1,7 +1,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  user: pro
+  user: postgres
   password: password
   host: localhost
 
@@ -16,5 +16,3 @@ test:
 production:
   <<: *default
   database: todo_react_production
-  username: todo_react
-  password: <%= ENV['TODO_REACT_DATABASE_PASSWORD'] %>

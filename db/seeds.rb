@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+10000.times {|i| List.create(title: Faker::Name.title, content: Faker::Lorem.paragraph, url: Faker::Company.logo)}

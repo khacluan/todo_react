@@ -5,6 +5,8 @@ class ListsController < ApplicationController
   # GET /lists.json
   def index
     @lists = List.all
+
+    render json: @lists if request.xhr?
   end
 
   # GET /lists/1

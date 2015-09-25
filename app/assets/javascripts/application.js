@@ -4,7 +4,8 @@
 //= require react
 //= require react_ujs
 //= require components
+//= require_tree ./pages
+//= require js-routes
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
